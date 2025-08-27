@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "DanzmannInput",
+	"Description": "An extension of the Enhanced Input Component and a Data Asset that proposes binding and setting up inputs by Gameplay Tags.",
+	"Category": "Danzmann",
+	"CreatedBy": "Vicente Danzmann",
+	"CreatedByURL": "http://github.com/iVcente",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "DanzmannInput",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		}
+	]
+}
