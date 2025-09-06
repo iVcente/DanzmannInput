@@ -12,6 +12,7 @@ public class DanzmannInput : ModuleRules
 			new string[]
 			{
 				"Core",
+				"DeveloperSettings",
 				"Engine",
 				"EnhancedInput",
 				"GameplayTags"
