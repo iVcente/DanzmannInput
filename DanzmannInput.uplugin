@@ -6,7 +6,7 @@
 	"Description": "An extension of the Enhanced Input Component that proposes setting up inputs according to Data Assets and binding them by Gameplay Tags. The goal is to decouple input configuration from an Actor as much as possible.",
 	"Category": "Danzmann",
 	"CreatedBy": "Vicente Danzmann",
-	"CreatedByURL": "http://github.com/iVcente",
+	"CreatedByURL": "https://github.com/iVcente",
 	"DocsURL": "https://github.com/iVcente/DanzmannInput/blob/main/README.md",
 	"MarketplaceURL": "",
 	"SupportURL": "",
