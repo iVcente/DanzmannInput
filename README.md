@@ -1,5 +1,5 @@
 # DanzmannInput
-An extension of the `UEnhancedInputComponent` that proposes setting up inputs according to Data Assets and binding them by Gameplay Tags. The goal is to decouple input configuration from an Actor as much as possible, focusing on defining the relationship of Actor and input configuration in the `Project Settings`. The plugin internally makes use of the Asset Manager to handle loading/unloading of the input configurations.
+An extension of `UEnhancedInputComponent` that proposes setting up inputs according to Data Assets and binding them by Gameplay Tags. The goal is to decouple input configuration from an Actor as much as possible, focusing on defining the relationship of Actor and input configuration in the `Project Settings`. The plugin internally makes use of the Asset Manager to handle loading/unloading of the input configurations.
 
 ---
 
