@@ -10,9 +10,8 @@
 class UDanzmannDataAsset_Input;
 
 /**
- * Settings for defining DanzmannDataAsset_Input per class.
- * The DanzmannEnhancedInputComponent will read given Actor's input
- * configuration from here.
+ * Settings for defining input configuration per class.
+ * The UDanzmannEnhancedInputComponent will read given Actor's input configuration from here.
  */
 UCLASS(Config = "Input", DefaultConfig)
 class DANZMANNINPUT_API UDanzmannInputSettings : public UDeveloperSettings
@@ -31,11 +30,11 @@ class DANZMANNINPUT_API UDanzmannInputSettings : public UDeveloperSettings
 		/**
 		 * @see more info in UDeveloperSettings.
 		 */
-		virtual FName GetSectionName() const override
+		virtual FText GetSectionText() const override
 		{
-			return FName("Danzmann Input");
+			return FText::FromString(TEXT("Danzmann Input"));
 		}
-
+	
 		/**
 		 * Get input configuration for given class. If we don't find an entry with the
 		 * original class, we'll start to go up in the inheritance chain checking if any
