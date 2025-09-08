@@ -39,7 +39,7 @@ class DANZMANNINPUT_API UDanzmannEnhancedInputComponent : public UEnhancedInputC
 		template<class TOwner = UObject, typename TCallback>
 		FEnhancedInputActionEventBinding& BindActionByGameplayTag(const FGameplayTag& GameplayTag, const UDanzmannDataAsset_Input* InputConfiguration, ETriggerEvent TriggerEvent, TOwner* Owner, TCallback Callback)
 		{
-			UE_CLOG(!InputConfiguration->InputActions.Contains(GameplayTag), LogDanzmannInput, Error, TEXT("[%hs] No valid Input Action found for \"%s\" Gameplay Tag within %s input configuration."), __FUNCTION__, *GameplayTag.ToString(), *InputConfiguration->GetName());
+			UE_CLOG(!InputConfiguration->InputActions.Contains(GameplayTag), LogDanzmannInput, Error, TEXT("[%hs] No valid Input Action found for \"%s\" within input configuration named %s."), __FUNCTION__, *GameplayTag.ToString(), *InputConfiguration->GetName());
 			UInputAction* InputAction = InputConfiguration->InputActions.FindRef(GameplayTag).Get();
 			return BindAction(InputAction, TriggerEvent, Owner, Callback);	
 		}

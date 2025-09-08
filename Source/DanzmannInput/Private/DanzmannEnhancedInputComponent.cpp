@@ -15,7 +15,6 @@ void UDanzmannEnhancedInputComponent::LoadInputConfiguration(FDanzmannOnInputCon
 	
 	if (InputConfigurationStreamableHandle.IsValid() && InputConfigurationStreamableHandle->HasLoadCompleted())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Already loaded!"));
 		Delegate.Execute(InputConfigurationStreamableHandle->GetLoadedAsset<UDanzmannDataAsset_Input>());
 		return;
 	}
@@ -47,14 +46,21 @@ void UDanzmannEnhancedInputComponent::LoadInputConfiguration(FDanzmannOnInputCon
 		UAssetManager& AssetManager = UAssetManager::Get();
 		const FPrimaryAssetId InputConfigurationAssetId = UKismetSystemLibrary::GetPrimaryAssetIdFromSoftObjectReference(InputConfigurationToLoad);
 
-		PendingInputConfigurationLoadedDelegates.Add(MoveTemp(Delegate));
+		if (InputConfigurationAssetId.IsValid())
+		{
+			PendingInputConfigurationLoadedDelegates.Add(MoveTemp(Delegate));
 
-		InputConfigurationStreamableHandle = AssetManager.PreloadPrimaryAssets(
-			{InputConfigurationAssetId},
-			{FName(TEXT("ImmediatelyLoading"))},
-			false,
-			FStreamableDelegate::CreateUObject(this, &ThisClass::OnInputConfigurationLoaded)
-		);
+			InputConfigurationStreamableHandle = AssetManager.PreloadPrimaryAssets(
+				{InputConfigurationAssetId},
+				{FName(TEXT("LoadAutomatically"))},
+				false,
+				FStreamableDelegate::CreateUObject(this, &ThisClass::OnInputConfigurationLoaded)
+			);
+		}
+		else
+		{
+			UE_LOG(LogDanzmannInput, Error, TEXT("Invalid Primary Asset ID for %s when trying to load input configuration. Please, make sure your input configurations are properly setup in Asset Manager settings."), *InputConfigurationToLoad.ToString())
+		}
 	}
 }
 

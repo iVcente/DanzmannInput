@@ -22,18 +22,18 @@ class DANZMANNINPUT_API UDanzmannDataAsset_Input : public UPrimaryDataAsset
 		 * @note It can be useful when you'd like to add a default set
 		 * of available inputs to a Pawn that has just been possessed, for example.
 		 */
-		UPROPERTY(EditDefaultsOnly, Meta = (AssetBundles = "ImmediatelyLoading"))
+		UPROPERTY(EditDefaultsOnly, Meta = (AssetBundles = "LoadAutomatically"))
 		TSoftObjectPtr<UInputMappingContext> DefaultInputMappingContext = nullptr;
 	
 		/**
 		 * Available Input Mapping Contexts.
 		 */
-		UPROPERTY(EditDefaultsOnly, Meta = (ForceInlineRow, Categories = "InputMappingContext", AssetBundles = "ImmediatelyLoading"))
+		UPROPERTY(EditDefaultsOnly, Meta = (ForceInlineRow, Categories = "InputMappingContext", AssetBundles = "LoadAutomatically"))
 		TMap<FGameplayTag, TSoftObjectPtr<UInputMappingContext>> InputMappingContexts;
 
 		/**
 		 * Available Input Actions.
 		 */
-		UPROPERTY(EditDefaultsOnly, Meta = (ForceInlineRow, Categories = "InputAction", AssetBundles = "ImmediatelyLoading"))
+		UPROPERTY(EditDefaultsOnly, Meta = (ForceInlineRow, Categories = "InputAction", AssetBundles = "LoadAutomatically"))
 		TMap<FGameplayTag, TSoftObjectPtr<UInputAction>> InputActions;
 };
