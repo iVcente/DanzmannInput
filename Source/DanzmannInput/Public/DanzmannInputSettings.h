@@ -19,20 +19,22 @@ class DANZMANNINPUT_API UDanzmannInputSettings : public UDeveloperSettings
 	GENERATED_BODY()
 
 	public:
+		#if WITH_EDITOR
+			/**
+			 * @see more info in UDeveloperSettings.
+			 */
+			virtual FText GetSectionText() const override
+			{
+				return FText::FromString(TEXT("Danzmann Input"));
+			}
+		#endif
+	
 		/**
 		 * @see more info in UDeveloperSettings.
 		 */
 		virtual FName GetCategoryName() const override
 		{
 			return FName("Plugins");
-		}
-
-		/**
-		 * @see more info in UDeveloperSettings.
-		 */
-		virtual FText GetSectionText() const override
-		{
-			return FText::FromString(TEXT("Danzmann Input"));
 		}
 	
 		/**
