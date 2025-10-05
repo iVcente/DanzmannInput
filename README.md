@@ -1,11 +1,11 @@
 # DanzmannInput
 An extension of `UEnhancedInputComponent` that proposes setting up inputs according to Data Assets and binding them by Gameplay Tags. The goal is to decouple input configuration from an Actor as much as possible, focusing on defining the relationship of Actor and input configuration in the `Project Settings`. The plugin internally makes use of the Asset Manager to handle loading/unloading of the input configurations.
 
----
+## Setup & Usage Example
 
-### Setup & Usage Example
+> Make sure you have added the `DanzmannInput` module to your project's Build.cs file. Also, enable `DanzmannInput` in your .uproject file.
 
-Make sure you have enabled the plugin on your `.uproject` and also added the `DanzmannInput` module to your project's `Build.cs` file. Then we need to create Gameplay Tags that represent Input Actions and Input Mapping Contexts. Feel free to modify `DanzmannGameplayTags_InputActions` and `DanzmannGameplayTags_InputMappingContexts` files for your needs -- take the content already present as an example.
+Then we need to create Gameplay Tags that represent Input Actions and Input Mapping Contexts. Feel free to modify `DanzmannGameplayTags_InputActions` and `DanzmannGameplayTags_InputMappingContexts` files for your needs -- take the content already present as an example.
 
 Below is a suggestion on how to set up a default Input Mapping Context for your Pawns using their base class, so whenever any Pawn is possessed the player will be able to control them right away:
 ```cpp
