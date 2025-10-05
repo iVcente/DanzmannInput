@@ -3,7 +3,7 @@ An extension of `UEnhancedInputComponent` that proposes setting up inputs accord
 
 ## Setup & Usage Example
 
-> Make sure you have added the `DanzmannInput` module to your project's Build.cs file. Also, enable `DanzmannInput` in your .uproject file.
+> Make sure you have added the `DanzmannInput` module to your project's Build.cs file. Also, enable `DanzmannInput` in your `.uproject` file.
 
 Then we need to create Gameplay Tags that represent Input Actions and Input Mapping Contexts. Feel free to modify `DanzmannGameplayTags_InputActions` and `DanzmannGameplayTags_InputMappingContexts` files for your needs -- take the content already present as an example.
 
