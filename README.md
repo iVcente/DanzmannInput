@@ -184,8 +184,7 @@ Now, in `Project Settings`, search for "Default Input Component Class" and set i
 <img width="1920" height="362" alt="image" src="https://github.com/user-attachments/assets/a189b6ab-bc38-482c-ad49-93e33d5c2331"/>
 
 Finally, we need to configure the Asset Manager to be aware of our input configurations. Under `Game > Asset Manager` add an entry to `Primary Asset Types to Scan` like this:
-
-<img width="1920" height="950" alt="image" src="https://github.com/user-attachments/assets/a927e4bd-dfe8-4f6f-b68e-9cc26e35dd9c"/>
+<img width="1920" height="901" alt="image" src="https://github.com/user-attachments/assets/42b460d9-571c-4780-8c12-95f69998d248"/>
 
 Just be sure to update the `Directories` variable with the path that contains your input configuration Data Assets.
 
