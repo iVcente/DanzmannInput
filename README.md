@@ -3,11 +3,11 @@ An extension of `UEnhancedInputComponent` that proposes setting up inputs accord
 
 ## Setup & Usage Example
 
-> Make sure you have added the `DanzmannInput` module to your project's Build.cs file. Also, enable `DanzmannInput` in your `.uproject` file.
+> Make sure you have added the `DanzmannInput` module to your project's `Build.cs` file. Also, enable `DanzmannInput` in your `.uproject` file.
 
-Then we need to create Gameplay Tags that represent Input Actions and Input Mapping Contexts. Feel free to modify `DanzmannGameplayTags_InputActions` and `DanzmannGameplayTags_InputMappingContexts` files for your needs -- take the content already present as an example.
+First of all, we need to create Gameplay Tags that represent Input Actions and Input Mapping Contexts. Feel free to modify `DanzmannGameplayTags_InputActions` and `DanzmannGameplayTags_InputMappingContexts` files for your needs -- take the content already present as an example -- or create a new file for your own Gameplay Tags.
 
-Below is a suggestion on how to set up a default Input Mapping Context for your Pawns using their base class, so whenever any Pawn is possessed the player will be able to control them right away:
+Below is a suggestion on how to set up a default Input Mapping Context for your Pawns using their base class, so whenever any Pawn is possessed, the player will be able to control them right away:
 ```cpp
 // MyBaseCharacter.h
 ...
@@ -85,6 +85,12 @@ The binding of the Input Actions is set up on the derived classes. The idea is t
 		void Input_Move(const FInputActionInstance& Instance);
 
 		/**
+		 * Callback to when we'd like to perform the Look action according to given input.
+		 * @param Instance Contain value for Input Action.
+		 */
+		void Input_Look(const FInputActionInstance& Instance);
+
+		/**
 		 * Callback to when we'd like to perform the start Jump action according to given input.
 		 * @param Instance Contain value for Input Action.
 		 */
@@ -117,6 +123,7 @@ The binding of the Input Actions is set up on the derived classes. The idea is t
 		UDanzmannEnhancedInputComponent* EnhancedInputComponent = Cast<UDanzmannEnhancedInputComponent>(InputComponent);
 
 		EnhancedInputComponent->BindActionByGameplayTag(Danzmann::GameplayTags::InputAction_Move, InputConfiguration, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
+		EnhancedInputComponent->BindActionByGameplayTag(Danzmann::GameplayTags::InputAction_Look, InputConfiguration, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
 		EnhancedInputComponent->BindActionByGameplayTag(Danzmann::GameplayTags::InputAction_Jump, InputConfiguration, ETriggerEvent::Started, this, &ThisClass::Input_ActivateJump);
 		EnhancedInputComponent->BindActionByGameplayTag(Danzmann::GameplayTags::InputAction_Jump, InputConfiguration, ETriggerEvent::Completed, this, &ThisClass::Input_DeactivateJump);
 	}
@@ -137,6 +144,21 @@ The binding of the Input Actions is set up on the derived classes. The idea is t
 		}
 	}
 
+	void AMyDerivedCharacter::Input_Look(const FInputActionInstance& Instance)
+	{
+		const FVector2D AxisValue = Instance.GetValue().Get<FVector2D>();
+
+		if (AxisValue.X != 0.0f)
+		{
+			AddControllerYawInput(AxisValue.X);
+		}
+
+		if (AxisValue.Y != 0.0f)
+		{
+			AddControllerPitchInput(AxisValue.Y);
+		}
+	}
+
 	void AMyDerivedCharacter::Input_ActivateJump(const FInputActionInstance& Instance)
 	{
 		Jump();
@@ -149,17 +171,19 @@ The binding of the Input Actions is set up on the derived classes. The idea is t
 
 ```
 
-The C++ side is done. Let's make the final adjustments in the editor. Create your Input Actions and Input Mapping Contexts.
+The C++ side is done. Let's make the final adjustments in the editor.
 
-Then, create a Data Asset that inherits from `UDanzmannDataAsset_Input`. You can create one Data Asset for each input configuration, for example:
+---
+
+Create your Input Actions and Input Mapping Contexts. Then, create a Data Asset that inherits from `UDanzmannDataAsset_Input`. You can create one Data Asset for each input configuration, for example:
 
 <img width="1920" height="592" alt="image" src="https://github.com/user-attachments/assets/b0e04a4a-1053-403d-a672-29f340ec5b36"/>
 
-Now, in `Project Settings` and under `Plugins > Danzmann Input Settings` map your input configuration to a class that will be using it when possessed:
+Now, in `Project Settings`, search for "Default Input Component Class" and set it to `DanzmannEnhancedInputComponent`. After that, under `Plugins > Danzmann Input Settings` map your input configuration to a class that will be using it when possessed:
 
 <img width="1920" height="362" alt="image" src="https://github.com/user-attachments/assets/a189b6ab-bc38-482c-ad49-93e33d5c2331"/>
 
-Finally, we need to configure the Asset Manager to be aware of our input configurations. Go to Project Settings and under `Game > Asset Manager` add an entry to `Primary Asset Types to Scan` like this:
+Finally, we need to configure the Asset Manager to be aware of our input configurations. Under `Game > Asset Manager` add an entry to `Primary Asset Types to Scan` like this:
 
 <img width="1920" height="950" alt="image" src="https://github.com/user-attachments/assets/a927e4bd-dfe8-4f6f-b68e-9cc26e35dd9c"/>
 
