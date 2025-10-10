@@ -46,8 +46,6 @@ Below is a suggestion on how to set up a default Input Mapping Context for your 
 	
 	void AMyBaseCharacter::AddDefaultInputMappingContext(const UDanzmannDataAsset_Input* InputConfiguration) const
 	{
-		const UDanzmannEnhancedInputComponent* EnhancedInputComponent = Cast<UDanzmannEnhancedInputComponent>(InputComponent);
-	
 		if (IsValid(InputConfiguration) && InputConfiguration->DefaultInputMappingContext.IsValid())
 		{
 			const ULocalPlayer* LocalPlayer = Cast<APlayerController>(GetController())->GetLocalPlayer();
@@ -134,29 +132,16 @@ The binding of the Input Actions is set up on the derived classes. The idea is t
 
 		const FRotator MovementRotation = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
 	
-		if (AxisValue.X != 0.0f)
-		{
-		 	AddMovementInput(MovementRotation.RotateVector(FVector::RightVector), AxisValue.X);
-		}
-		if (AxisValue.Y != 0.0f)
-		{
-		 	AddMovementInput(MovementRotation.RotateVector(FVector::ForwardVector), AxisValue.Y);
-		}
+		AddMovementInput(MovementRotation.RotateVector(FVector::RightVector), AxisValue.X);
+		AddMovementInput(MovementRotation.RotateVector(FVector::ForwardVector), AxisValue.Y);
 	}
 
 	void AMyDerivedCharacter::Input_Look(const FInputActionInstance& Instance)
 	{
 		const FVector2D AxisValue = Instance.GetValue().Get<FVector2D>();
 
-		if (AxisValue.X != 0.0f)
-		{
-			AddControllerYawInput(AxisValue.X);
-		}
-
-		if (AxisValue.Y != 0.0f)
-		{
-			AddControllerPitchInput(AxisValue.Y);
-		}
+		AddControllerYawInput(AxisValue.X);
+		AddControllerPitchInput(AxisValue.Y);
 	}
 
 	void AMyDerivedCharacter::Input_ActivateJump(const FInputActionInstance& Instance)
