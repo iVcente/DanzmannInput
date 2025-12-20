@@ -59,5 +59,5 @@ class DANZMANNINPUT_API UDanzmannInputSettings : public UDeveloperSettings
 		 * @note Use UDanzmannInputSettings::GetInputConfiguration() to access the configurations. 
 		 */
 		UPROPERTY(Config, EditAnywhere)
-		TMap<TSoftClassPtr<AActor>, TSoftObjectPtr<UDanzmannDataAsset_Input>> InputConfigurations;
+		TMap<TSoftClassPtr<APawn>, TSoftObjectPtr<UDanzmannDataAsset_Input>> InputConfigurations;
 };
