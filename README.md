@@ -16,7 +16,7 @@ Below is a suggestion on how to set up a default Input Mapping Context for your 
 	public:
 	    /**
 	     * Set up default Input Mapping Context.
-	     * @see more info APawn.
+	     * @see more info Pawn.h.
 	     */
 	    virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	
@@ -66,7 +66,7 @@ The binding of the Input Actions is set up on the derived classes. The idea is t
 	public:
 		/**
 		 * Set up binding for Input Actions.
-		 * @see more info APawn.
+		 * @see more info Pawn.h.
 		 */
 		virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 

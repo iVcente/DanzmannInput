@@ -21,7 +21,7 @@ class DANZMANNINPUT_API UDanzmannInputSettings : public UDeveloperSettings
 	public:
 		#if WITH_EDITOR
 			/**
-			 * @see more info in UDeveloperSettings.
+			 * @see more info in DeveloperSettings.h.
 			 */
 			virtual FText GetSectionText() const override
 			{
@@ -30,7 +30,7 @@ class DANZMANNINPUT_API UDanzmannInputSettings : public UDeveloperSettings
 		#endif
 	
 		/**
-		 * @see more info in UDeveloperSettings.
+		 * @see more info in DeveloperSettings.h.
 		 */
 		virtual FName GetCategoryName() const override
 		{
