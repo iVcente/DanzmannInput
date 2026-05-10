@@ -11,7 +11,7 @@ void FDanzmannInputMappingContextConfig::PostSerialize(const FArchive& Ar)
 		{
 			FString InputMappingContextName = InputMappingContext->GetName();
 			InputMappingContextName.RemoveFromEnd(TEXT("_C"));
-			EditorDisplayName = FString::Printf(TEXT("%s | %d"), *InputMappingContextName, Priority);	
+			EditorDisplayName = FString::Printf(TEXT("%s | Priority %d"), *InputMappingContextName, Priority);	
 		}
 	#endif
 }

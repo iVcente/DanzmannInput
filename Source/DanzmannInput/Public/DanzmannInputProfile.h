@@ -39,6 +39,6 @@ class DANZMANNINPUT_API UDanzmannInputProfile : public UDataAsset
 		/**
 		 * Input Mapping Contexts (with priorities) to be added.
 		 */
-		UPROPERTY(EditDefaultsOnly)
+		UPROPERTY(EditDefaultsOnly, Meta = (TitleProperty = EditorDisplayName))
 		TArray<FDanzmannInputMappingContextConfig> InputMappingContexts;
 };
