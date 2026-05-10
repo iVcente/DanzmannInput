@@ -1,0 +1,31 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "2.0",
+	"FriendlyName": "DanzmannInput",
+	"Description": "A plugin to simplify defining and binding inputs to a Pawn, a Player Controller, or even their Components.",
+	"Category": "Danzmann",
+	"CreatedBy": "Vicente Danzmann",
+	"CreatedByURL": "https://danzmann.dev/",
+	"DocsURL": "https://github.com/iVcente/DanzmannInput/blob/main/README.md",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"EnabledByDefault": true,
+	"Modules": [
+		{
+			"Name": "DanzmannInput",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		}
+	]
+}
