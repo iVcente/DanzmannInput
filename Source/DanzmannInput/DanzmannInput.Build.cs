@@ -14,8 +14,7 @@ public class DanzmannInput : ModuleRules
 				"Core",
 				"Engine",
 				"EnhancedInput",
-				"GameplayTags",
-				"ModularGameplay"
+				"GameplayTags"
 			}
 		);
 		

@@ -1,4 +1,4 @@
-// Copyright (C) 2025 Vicente Danzmann. All Rights Reserved.
+// Copyright (C) 2026 Vicente Danzmann. All Rights Reserved.
 
 #include "DanzmannInput.h"
 

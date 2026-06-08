@@ -19,5 +19,5 @@ struct FDanzmannInputActionBindingHandle
 	 * Handle for each trigger event associated to an Input Action.
 	 */
 	UPROPERTY()
-	TMap<ETriggerEvent, int32> Handles;
+	TMap<ETriggerEvent, uint32> Handles;
 };

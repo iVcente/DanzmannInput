@@ -1,9 +1,9 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "2.0",
+	"VersionName": "2.1",
 	"FriendlyName": "DanzmannInput",
-	"Description": "A plugin to simplify defining and binding inputs to a Pawn, a Player Controller, or even their Components.",
+	"Description": "A plugin to simplify defining and binding inputs to a Pawn, and its Components.",
 	"Category": "Danzmann",
 	"CreatedBy": "Vicente Danzmann",
 	"CreatedByURL": "https://danzmann.dev/",

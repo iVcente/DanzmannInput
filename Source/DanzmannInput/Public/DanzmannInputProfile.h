@@ -13,7 +13,7 @@ struct FDanzmannInputActionConfig;
 struct FDanzmannInputMappingContextConfig;
 
 /**
- * Input profile containing Input Actions and Input Mapping Contexts that
+ * Input Profile containing Input Actions and Input Mapping Contexts that
  * should be bound and added, respectively.
  */
 UCLASS(BlueprintType, Const)
@@ -23,18 +23,34 @@ class DANZMANNINPUT_API UDanzmannInputProfile : public UDataAsset
 
 	public:
 		/**
-		 * Find the Input Action given InputGameplayTag.
+		 * Find a native Input Action given Input Gameplay Tag.
 		 * @param InputGameplayTag Tag to look up.
 		 * @param bLogNotFound Log an error if the tag is missing.
 		 * @return Matching Input Action, or nullptr if not found.
 		 */
-		const UInputAction* FindInputActionForGameplayTag(const FGameplayTag& InputGameplayTag, bool bLogNotFound = true) const;
+		const UInputAction* FindNativeInputActionForGameplayTag(const FGameplayTag& InputGameplayTag, bool bLogNotFound = true) const;
 
 		/**
-		 * Input Actions to be bound.
+		 * Find a Gameplay Ability Input Action given Input Gameplay Tag.
+		 * @param InputGameplayTag Tag to look up.
+		 * @param bLogNotFound Log an error if the tag is missing.
+		 * @return Matching Input Action, or nullptr if not found.
+		 */
+		const UInputAction* FindGameplayAbilityInputActionForGameplayTag(const FGameplayTag& InputGameplayTag, bool bLogNotFound = true) const;
+
+		/**
+		 * Native Input Actions to be bound.
 		 */
 		UPROPERTY(EditDefaultsOnly, Meta = (TitleProperty = EditorDisplayName))
-		TArray<FDanzmannInputActionConfig> InputActions;
+		TArray<FDanzmannInputActionConfig> NativeInputActions;
+
+		/**
+		 * Gameplay Ability Input Actions to be bound. Every tag listed here will be bound
+		 * to the owning Pawn's or Player State's Ability System Component, regardless of whether
+		 * the matching Gameplay Ability has been granted yet.
+		 */
+		UPROPERTY(EditDefaultsOnly, Meta = (TitleProperty = EditorDisplayName))
+		TArray<FDanzmannInputActionConfig> GameplayAbilityInputActions;
 
 		/**
 		 * Input Mapping Contexts (with priorities) to be added.
