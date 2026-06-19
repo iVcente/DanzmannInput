@@ -4,7 +4,7 @@ Data Asset-driven Enhanced Input wrapper. An Input Profile describes a Pawn's bi
 
 Pawn-scoped by design. Controller-scope inputs (UI/menus) are intentionally out of scope -- wire those with vanilla `APlayerController::SetupInputComponent()`.
 
-> In order for the plugin's Enhanced Input Component subclass to be used on Pawns and Player Controllers, set `DefaultInputComponentClass` variable in `Config/DefaultInput.ini` as the following:
+> In order for the plugin's Enhanced Input Component subclass to be used on Pawns and Player Controllers, the project must set `DefaultInputComponentClass` variable in `Config/DefaultInput.ini` as the following:
 > ```ini
 > [/Script/Engine.InputSettings]
 > DefaultInputComponentClass=/Script/DanzmannInput.DanzmannEnhancedInputComponent
